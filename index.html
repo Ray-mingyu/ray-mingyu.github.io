@@ -212,10 +212,34 @@
 
     .socials {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 10px;
       margin-top: 10px;
       font-size: 14px;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 5px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    .socials a[href]:hover {
+      border-color: var(--green);
+      background: #eaf0e5;
+      text-decoration: none;
+    }
+
+    .socials a[aria-disabled="true"] {
+      color: var(--muted);
+      border-style: dashed;
+      cursor: not-allowed;
     }
 
     /* Sections */
@@ -499,6 +523,17 @@
         <figcaption>Ray · Melbourne</figcaption>
 
         <div class="socials">
+          <!-- CV 链接接口：上传 PDF 后，添加 href="docs/CV.pdf"，
+               并删除 aria-disabled、tabindex 和 title 属性。也可填写完整网址。 -->
+          <a
+            id="cv-link"
+            role="link"
+            aria-disabled="true"
+            tabindex="-1"
+            title="CV not available yet"
+          >CV</a>
+          <!-- Blog 链接接口：将 href="#blog" 换成你的博客完整网址。 -->
+          <a id="blog-link" href="#blog">Blog</a>
           <a href="https://github.com/Ray-mingyu">
             GitHub ↗
           </a>
