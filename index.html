@@ -7,7 +7,7 @@
   <title>Ray | Personal Website</title>
   <meta name="author" content="Ray">
   <meta name="description"
-        content="Ray's personal website: distributed systems, Java backend development, and self-hosting.">
+        content="Ray's personal website: projects, learning, and life beyond code.">
 
   <style>
     /* Colors and fonts */
@@ -203,6 +203,45 @@
       background: #fff;
     }
 
+    .portrait-switch {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      border-radius: 15px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .portrait-switch:disabled {
+      opacity: 1;
+      cursor: default;
+    }
+
+    .portrait-switch:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
+    }
+
+    .portrait-alternate {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+
+    .portrait-alternate[hidden] {
+      display: none;
+    }
+
+    .portrait-switch.is-alternate .portrait-alternate {
+      opacity: 1;
+    }
+
     figcaption {
       margin-top: 9px;
       color: var(--muted);
@@ -328,29 +367,58 @@
       font-size: 13px;
     }
 
-    /* Education */
-    .education {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 20px;
-    }
-
-    .education-label {
-      padding-top: 2px;
+    /* Background: add one timeline item for each stage of education. */
+    .section-note {
+      margin: -12px 0 24px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .education h3 {
+    .timeline {
+      list-style: none;
+      margin: 0 0 0 6px;
+      padding: 0 0 0 27px;
+      border-left: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 30px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 4px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px var(--paper);
+    }
+
+    .timeline-date {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline h3 {
       font-size: 17px;
     }
 
-    .education p {
+    .timeline p {
       margin-bottom: 5px;
       font-size: 14px;
     }
 
-    /* Blog */
+    /* Miscellanea: personal content will be added later. */
     .empty {
       padding: 18px 0;
       border-top: 1px solid var(--line);
@@ -424,8 +492,7 @@
         min-height: 135px;
       }
 
-      .news,
-      .education {
+      .news {
         grid-template-columns: 1fr;
         gap: 5px;
       }
@@ -448,6 +515,10 @@
       html {
         scroll-behavior: auto;
       }
+
+      .portrait-alternate {
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -461,12 +532,11 @@
       <a class="brand" href="#bio">Ray</a>
 
       <nav aria-label="Main navigation">
-        <a href="#bio">About</a>
+        <a href="#bio">Bio</a>
+        <a href="#project">Project</a>
         <a href="#news">News</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="#bg" title="Background — education timeline">BG</a>
+        <a href="#misc">MISC</a>
       </nav>
     </div>
   </header>
@@ -493,8 +563,8 @@
         </p>
 
         <p>
-          I share my learning notes, engineering projects,
-          and self-hosting experiences here.
+          A place for my projects, learning journey,
+          and life beyond code.
         </p>
 
         <p class="topics">
@@ -512,15 +582,34 @@
       </div>
 
       <figure>
-        <img
-          class="portrait"
-          src="pic/Ray.PNG"
-          alt="Ray's Memoji avatar"
-          width="400"
-          height="400"
+        <button
+          class="portrait-switch"
+          id="portrait-switch"
+          type="button"
+          aria-label="Switch profile photo"
+          aria-describedby="portrait-caption"
+          aria-pressed="false"
+          disabled
         >
+          <img
+            class="portrait"
+            src="pic/Ray.PNG"
+            alt="Ray's Memoji avatar"
+            width="400"
+            height="400"
+          >
+          <img
+            class="portrait portrait-alternate"
+            id="portrait-alternate"
+            alt=""
+            aria-hidden="true"
+            width="400"
+            height="400"
+            hidden
+          >
+        </button>
 
-        <figcaption>Ray · Melbourne</figcaption>
+        <figcaption id="portrait-caption" aria-live="polite">Ray · Melbourne</figcaption>
 
         <div class="socials">
           <!-- CV 链接接口：上传 PDF 后，添加 href="docs/CV.pdf"，
@@ -537,35 +626,17 @@
           <a href="https://github.com/Ray-mingyu">
             GitHub ↗
           </a>
-          <a href="#contact">Contact</a>
         </div>
       </figure>
-    </section>
-
-    <!-- News -->
-    <section
-      class="section"
-      id="news"
-      aria-labelledby="news-heading"
-    >
-      <h2 id="news-heading">News</h2>
-
-      <div class="news">
-        <time datetime="2026-10">Oct 2026</time>
-        <p>
-          Launched the first version of my personal website
-          on GitHub Pages.
-        </p>
-      </div>
     </section>
 
     <!-- Projects -->
     <section
       class="section"
-      id="projects"
-      aria-labelledby="projects-heading"
+      id="project"
+      aria-labelledby="project-heading"
     >
-      <h2 id="projects-heading">Projects</h2>
+      <h2 id="project-heading">Project</h2>
 
       <article class="project">
         <div class="project-art" aria-hidden="true">
@@ -603,56 +674,55 @@
       </article>
     </section>
 
-    <!-- Education -->
+    <!-- News -->
     <section
       class="section"
-      id="education"
-      aria-labelledby="education-heading"
+      id="news"
+      aria-labelledby="news-heading"
     >
-      <h2 id="education-heading">Education</h2>
+      <h2 id="news-heading">News</h2>
 
-      <div class="education">
-        <span class="education-label">Current</span>
-
-        <div>
-          <h3>The University of Melbourne</h3>
-          <p class="muted">
-            Master of Information Technology
-          </p>
-        </div>
+      <div class="news">
+        <time datetime="2026-10">Oct 2026</time>
+        <p>
+          Launched the first version of my personal website
+          on GitHub Pages.
+        </p>
       </div>
     </section>
 
-    <!-- Blog -->
-    <section
-      class="section"
-      id="blog"
-      aria-labelledby="blog-heading"
-    >
-      <h2 id="blog-heading">Blog &amp; Notes</h2>
-
-      <!-- Add published article titles, dates, and links here. -->
-      <p class="empty">
-        Coming soon — learning notes and project write-ups.
-      </p>
+    <!-- BG: learning timeline. Add real dates and earlier education here. -->
+    <section class="section" id="bg" aria-labelledby="bg-heading">
+      <h2 id="bg-heading">Background</h2>
+      <p class="section-note">My learning journey.</p>
+      <ol class="timeline" aria-label="Education timeline">
+        <!-- 学习时间线：专业名称和更多经历可在这里补充。 -->
+        <li class="timeline-item">
+          <span class="timeline-date">
+            <time datetime="2022-09">Sep 2022</time> –
+            <time datetime="2026-06">Jun 2026</time>
+          </span>
+          <h3>Harbin Normal University</h3>
+          <p class="muted">Undergraduate studies</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-date">
+            <time datetime="2026-07">Jul 2026</time> –
+            <time datetime="2028-07">Jul 2028</time> (expected)
+          </span>
+          <h3>The University of Melbourne</h3>
+          <p class="muted">Master of Information Technology</p>
+          <p>Studying distributed systems and exploring Java backend development.</p>
+        </li>
+      </ol>
     </section>
 
-    <!-- Contact -->
-    <section
-      class="section"
-      id="contact"
-      aria-labelledby="contact-heading"
-    >
-      <h2 id="contact-heading">Contact</h2>
-
-      <p>
-        You can find me on
-        <a href="https://github.com/Ray-mingyu">
-          GitHub @Ray-mingyu ↗
-        </a>.
+    <!-- MISC: leave specific interests blank until confirmed. -->
+    <section class="section" id="misc" aria-labelledby="misc-heading">
+      <h2 id="misc-heading">Miscellanea</h2>
+      <p class="empty">
+        Life updates, music, films, and everyday interests — more to come.
       </p>
-
-      <!-- Add a public email address here when ready. -->
     </section>
   </main>
 
@@ -662,5 +732,72 @@
       <a href="#bio">Back to top ↑</a>
     </div>
   </footer>
+
+  <script>
+    // 头像切换配置：将 src 填为项目中第二张照片的路径，例如 pic/life.jpg。
+    // caption 填写照片的英文说明；alt 填写照片的英文描述。
+    // 留空或图片加载失败时，继续显示当前头像，不启用切换。
+    const alternatePortrait = {
+      src: "",
+      caption: "me and my sweet",
+      alt: ""
+    };
+
+    (() => {
+      const button = document.getElementById("portrait-switch");
+      const alternate = document.getElementById("portrait-alternate");
+      const caption = document.getElementById("portrait-caption");
+      const originalCaption = caption.textContent;
+      const src = alternatePortrait.src.trim();
+      if (!src) return;
+
+      let ready = false;
+      let showingAlternate = false;
+      const show = (active) => {
+        if (!ready) return;
+        showingAlternate = active;
+        button.classList.toggle("is-alternate", active);
+        button.setAttribute("aria-pressed", String(active));
+        button.setAttribute("aria-label", active
+          ? `${alternatePortrait.alt.trim() || "Alternate profile photo"}. Show default profile photo`
+          : "Show alternate profile photo");
+        caption.textContent = active
+          ? (alternatePortrait.caption.trim() || originalCaption)
+          : originalCaption;
+      };
+
+      alternate.addEventListener("load", () => {
+        ready = true;
+        alternate.hidden = false;
+        button.disabled = false;
+        button.setAttribute("aria-label", "Show alternate profile photo");
+      }, { once: true });
+
+      alternate.addEventListener("error", () => {
+        show(false);
+        ready = false;
+        alternate.hidden = true;
+        button.disabled = true;
+        button.setAttribute("aria-label", "Profile photo");
+      }, { once: true });
+
+      button.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") show(true);
+      });
+      button.addEventListener("pointerleave", (event) => {
+        if (event.pointerType === "mouse") show(false);
+      });
+      // 手机点击，以及键盘 Enter / Space，均可切换。
+      button.addEventListener("click", () => show(!showingAlternate));
+      button.addEventListener("blur", () => show(false));
+      button.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") show(false);
+      });
+
+      // 按钮的动态 aria-label 提供照片描述，叠加图片不重复朗读。
+      alternate.alt = "";
+      alternate.src = src;
+    })();
+  </script>
 </body>
 </html>
