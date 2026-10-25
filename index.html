@@ -187,36 +187,20 @@
       font-size: 14px;
     }
 
-    /* Portrait placeholder */
+    /* Profile image */
     figure {
       margin: 0;
     }
 
     .portrait {
-      display: grid;
-      place-content: center;
+      display: block;
       width: 100%;
+      height: auto;
       aspect-ratio: 1 / 1;
+      object-fit: contain;
       border: 1px solid #d5dccf;
       border-radius: 15px;
-      background: linear-gradient(
-        135deg,
-        #e6ebdf,
-        #f0e9d8
-      );
-      text-align: center;
-    }
-
-    .portrait span {
-      color: #315a48;
-      font: italic 68px var(--serif);
-    }
-
-    .portrait small {
-      margin-top: 9px;
-      color: #526453;
-      font-size: 10px;
-      letter-spacing: 3px;
+      background: #fff;
     }
 
     figcaption {
@@ -394,10 +378,6 @@
         justify-self: center;
       }
 
-      .portrait span {
-        font-size: 52px;
-      }
-
       .intro-text {
         text-align: center;
       }
@@ -508,15 +488,13 @@
       </div>
 
       <figure>
-        <!-- Replace this placeholder with your photo when ready. -->
-        <div
+        <img
           class="portrait"
-          role="img"
-          aria-label="Ray monogram placeholder"
+          src="pic/Ray.PNG"
+          alt="Ray's Memoji avatar"
+          width="400"
+          height="400"
         >
-          <span>Ray.</span>
-          <small>LEARN · BUILD · SHARE</small>
-        </div>
 
         <figcaption>Ray · Melbourne</figcaption>
 
