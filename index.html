@@ -128,6 +128,24 @@
       font-size: 14px;
     }
 
+    .language-toggle {
+      flex-shrink: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 5px 12px;
+      background: transparent;
+      color: var(--green);
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .language-toggle:hover { background: #eeeade; }
+    .language-toggle:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 4px;
+    }
+
     /* Introduction */
     .intro {
       display: grid;
@@ -448,13 +466,15 @@
       }
 
       .nav {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        align-items: center;
         gap: 10px;
         padding-block: 12px;
       }
 
       nav {
+        order: 3;
+        width: 100%;
         gap: 6px 19px;
       }
 
@@ -524,20 +544,21 @@
 </head>
 
 <body>
-  <a class="skip" href="#content">Skip to content</a>
+  <a class="skip" href="#content" data-zh="跳至正文">Skip to content</a>
 
   <!-- Navigation -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#bio">Ray</a>
 
-      <nav aria-label="Main navigation">
-        <a href="#bio">Bio</a>
-        <a href="#project">Project</a>
-        <a href="#news">News</a>
-        <a href="#bg" title="Background — education timeline">BG</a>
-        <a href="#misc">MISC</a>
+      <nav aria-label="Main navigation" data-zh-aria-label="主导航">
+        <a href="#bio" data-zh="简介">Bio</a>
+        <a href="#project" data-zh="项目">Project</a>
+        <a href="#news" data-zh="动态">News</a>
+        <a href="#bg" title="Background — education timeline" data-zh-title="学习经历时间线" data-zh="学习经历">BG</a>
+        <a href="#misc" data-zh="生活">MISC</a>
       </nav>
+      <button id="language-toggle" class="language-toggle" type="button" aria-label="切换到中文版" hidden>中文</button>
     </div>
   </header>
 
@@ -550,27 +571,27 @@
 
         <h1 id="name">Mingyu Lu</h1>
 
-        <p class="affiliation">
+        <p class="affiliation" data-zh="信息技术硕士在读 · 墨尔本大学">
           Master of IT Student · University of Melbourne
         </p>
 
-        <p class="lead">
+        <p class="lead" data-zh="你好，我是 Ray，目前就读于墨尔本大学。我是一名不断学习的开发者。">
           Hi, I'm Ray, a student at the University of Melbourne.
           I'm a developer who is always learning.
         </p>
 
-        <p>
+        <p data-zh="我在这里分享学习笔记、项目经历与日常生活。">
           I share my learning notes, projects,
           and everyday life here.
         </p>
 
-        <p class="topics">
+        <p class="topics" data-zh="分布式系统 / Java / 自托管">
           Distributed Systems / Java / Self-hosting
         </p>
 
         <details>
-          <summary>More about me</summary>
-          <p>
+          <summary data-zh="更多关于我">More about me</summary>
+          <p data-zh="我正在学习将系统知识应用于实践，通过项目探索部署、网络以及服务之间的协作。">
             I'm learning to connect systems concepts with
             practical applications, using projects to explore
             deployment, networking, and how services work together.
@@ -591,7 +612,7 @@
           <img
             class="portrait"
             src="pic/Ray.PNG"
-            alt="Ray's Memoji avatar"
+            alt="Ray's Memoji avatar" data-zh-alt="Ray 的拟我表情头像"
             width="400"
             height="400"
           >
@@ -618,10 +639,10 @@
             role="link"
             aria-disabled="true"
             tabindex="-1"
-            title="CV not available yet"
-          >CV</a>
+            title="CV not available yet" data-zh-title="简历暂未上传"
+           data-zh="简历">CV</a>
           <!-- Blog 链接：如需更换博客，修改下面的 href 地址。 -->
-          <a id="blog-link" href="https://blog.csdn.net/m0_73494933" target="_blank" rel="noopener noreferrer">Blog</a>
+          <a id="blog-link" href="https://blog.csdn.net/m0_73494933" target="_blank" rel="noopener noreferrer" data-zh="博客">Blog</a>
           <a href="https://github.com/Ray-mingyu">
             GitHub ↗
           </a>
@@ -635,22 +656,22 @@
       id="project"
       aria-labelledby="project-heading"
     >
-      <h2 id="project-heading">Project</h2>
+      <h2 id="project-heading" data-zh="项目">Project</h2>
 
       <article class="project">
         <div class="project-art" aria-hidden="true">
           <strong>openGym</strong>
-          <span>SELF-HOSTING</span>
+          <span data-zh="自托管">SELF-HOSTING</span>
         </div>
 
         <div>
-          <h3>openGym · Self-hosting</h3>
+          <h3 data-zh="openGym · 自托管实践">openGym · Self-hosting</h3>
 
           <p class="tagline">
             Docker Compose / Caddy / HTTPS
           </p>
 
-          <p>
+          <p data-zh="基于开源健身记录应用 openGym 的自托管项目。我的实践主要包括容器部署、反向代理配置与 HTTPS 设置，并探索从浏览器到后端的请求链路。">
             A self-hosting project using openGym,
             an open-source fitness tracker.
             My work focuses on container deployment,
@@ -658,14 +679,14 @@
             exploring the request path from browser to backend.
           </p>
 
-          <p class="muted">
+          <p class="muted" data-zh="这里记录的是我的部署与运维实践，原应用由 openGym 项目贡献者开发。">
             This entry covers my deployment and operations practice.
             The original application is developed by the
             openGym project contributors.
           </p>
 
           <div class="project-links">
-            <a href="https://github.com/DuarteSantos8/openGym">
+            <a href="https://github.com/DuarteSantos8/openGym" data-zh="原项目源码 ↗">
               Upstream source ↗
             </a>
           </div>
@@ -679,11 +700,11 @@
       id="news"
       aria-labelledby="news-heading"
     >
-      <h2 id="news-heading">News</h2>
+      <h2 id="news-heading" data-zh="动态">News</h2>
 
       <div class="news">
-        <time datetime="2026-10">Oct 2026</time>
-        <p>
+        <time datetime="2026-10" data-zh="2026 年 10 月">Oct 2026</time>
+        <p data-zh="在 GitHub Pages 上发布了个人网站的第一个版本。">
           Launched the first version of my personal website
           on GitHub Pages.
         </p>
@@ -692,34 +713,34 @@
 
     <!-- BG: learning timeline. Add real dates and earlier education here. -->
     <section class="section" id="bg" aria-labelledby="bg-heading">
-      <h2 id="bg-heading">Background</h2>
-      <p class="section-note">My learning journey.</p>
-      <ol class="timeline" aria-label="Education timeline">
+      <h2 id="bg-heading" data-zh="学习经历">Background</h2>
+      <p class="section-note" data-zh="我的学习历程。">My learning journey.</p>
+      <ol class="timeline" aria-label="Education timeline" data-zh-aria-label="教育经历时间线">
         <!-- 学习时间线：专业名称和更多经历可在这里补充。 -->
         <li class="timeline-item">
           <span class="timeline-date">
-            <time datetime="2022-09">Sep 2022</time> –
-            <time datetime="2026-06">Jun 2026</time>
+            <time datetime="2022-09" data-zh="2022 年 9 月">Sep 2022</time> –
+            <time datetime="2026-06" data-zh="2026 年 6 月">Jun 2026</time>
           </span>
-          <h3>Harbin Normal University</h3>
-          <p class="muted">Undergraduate studies</p>
+          <h3 data-zh="哈尔滨师范大学">Harbin Normal University</h3>
+          <p class="muted" data-zh="本科">Undergraduate studies</p>
         </li>
         <li class="timeline-item">
           <span class="timeline-date">
-            <time datetime="2026-07">Jul 2026</time> –
-            <time datetime="2028-07">Jul 2028</time> (expected)
+            <time datetime="2026-07" data-zh="2026 年 7 月">Jul 2026</time> –
+            <time datetime="2028-07" data-zh="2028 年 7 月">Jul 2028</time> <span data-zh="（预计）">(expected)</span>
           </span>
-          <h3>The University of Melbourne</h3>
-          <p class="muted">Master of Information Technology</p>
-          <p>Studying distributed systems and exploring Java backend development.</p>
+          <h3 data-zh="墨尔本大学">The University of Melbourne</h3>
+          <p class="muted" data-zh="信息技术硕士">Master of Information Technology</p>
+          <p data-zh="学习分布式系统，探索 Java 后端开发。">Studying distributed systems and exploring Java backend development.</p>
         </li>
       </ol>
     </section>
 
     <!-- MISC: leave specific interests blank until confirmed. -->
     <section class="section" id="misc" aria-labelledby="misc-heading">
-      <h2 id="misc-heading">Miscellanea</h2>
-      <p class="empty">
+      <h2 id="misc-heading" data-zh="生活与兴趣">Miscellanea</h2>
+      <p class="empty" data-zh="生活近况、音乐、影视与日常兴趣，持续更新。">
         Life updates, music, films, and everyday interests — more to come.
       </p>
     </section>
@@ -728,11 +749,51 @@
   <footer>
     <div class="container">
       <span>© 2026 Ray</span>
-      <a href="#bio">Back to top ↑</a>
+      <a href="#bio" data-zh="返回顶部 ↑">Back to top ↑</a>
     </div>
   </footer>
 
   <script>
+    // 中文译文写在对应元素的 data-zh 中；英文仍直接编辑页面正文。
+    (() => {
+      const toggle = document.getElementById("language-toggle");
+      const texts = [...document.querySelectorAll("[data-zh]")]
+        .map(element => ({ element, english: element.textContent }));
+      const attributes = ["title", "aria-label", "alt"].flatMap(attribute =>
+        [...document.querySelectorAll(`[data-zh-${attribute}]`)]
+          .map(element => ({ element, attribute, english: element.getAttribute(attribute) }))
+      );
+      const description = document.querySelector('meta[name="description"]');
+      const englishDescription = description.content;
+      const applyLanguage = (language) => {
+        const chinese = language === "zh-CN";
+        document.documentElement.lang = chinese ? "zh-CN" : "en";
+        texts.forEach(({ element, english }) => {
+          element.textContent = chinese ? element.dataset.zh : english;
+        });
+        attributes.forEach(({ element, attribute, english }) => {
+          element.setAttribute(attribute, chinese
+            ? element.getAttribute(`data-zh-${attribute}`) : english);
+        });
+        description.content = chinese
+          ? "Ray 的个人网站：分布式系统、Java 后端开发与自托管实践。"
+          : englishDescription;
+        toggle.textContent = chinese ? "English" : "中文";
+        toggle.lang = chinese ? "en" : "zh-CN";
+        toggle.setAttribute("aria-label", chinese ? "Switch to English" : "切换到中文版");
+        document.dispatchEvent(new Event("languagechange"));
+      };
+      let savedLanguage = "en";
+      try { savedLanguage = localStorage.getItem("ray-site-language") || "en"; } catch {}
+      applyLanguage(savedLanguage);
+      toggle.hidden = false;
+      toggle.addEventListener("click", () => {
+        const nextLanguage = document.documentElement.lang === "en" ? "zh-CN" : "en";
+        applyLanguage(nextLanguage);
+        try { localStorage.setItem("ray-site-language", nextLanguage); } catch {}
+      });
+    })();
+
     // 头像切换配置：将 src 填为项目中第二张照片的路径，例如 pic/life.jpg。
     // caption 填写照片的英文说明；alt 填写照片的英文描述。
     // 留空或图片加载失败时，继续显示当前头像，不启用切换。
@@ -757,19 +818,31 @@
         showingAlternate = active;
         button.classList.toggle("is-alternate", active);
         button.setAttribute("aria-pressed", String(active));
+        const chinese = document.documentElement.lang === "zh-CN";
         button.setAttribute("aria-label", active
-          ? `${alternatePortrait.alt.trim() || "Alternate profile photo"}. Show default profile photo`
-          : "Show alternate profile photo");
+          ? (chinese ? "毕业照，切换回默认头像" : `${alternatePortrait.alt.trim() || "Alternate profile photo"}. Show default profile photo`)
+          : (chinese ? "显示另一张照片" : "Show alternate profile photo"));
         caption.textContent = active
-          ? (alternatePortrait.caption.trim() || originalCaption)
-          : originalCaption;
+          ? (chinese && alternatePortrait.caption === "me" ? "我" : (alternatePortrait.caption.trim() || originalCaption))
+          : (chinese ? "Ray · 墨尔本" : originalCaption);
       };
+
+      const refreshPortraitLanguage = () => {
+        const chinese = document.documentElement.lang === "zh-CN";
+        if (ready) show(showingAlternate);
+        else {
+          caption.textContent = chinese ? "Ray · 墨尔本" : originalCaption;
+          button.setAttribute("aria-label", chinese ? "个人头像" : "Profile photo");
+        }
+      };
+      document.addEventListener("languagechange", refreshPortraitLanguage);
+      refreshPortraitLanguage();
 
       alternate.addEventListener("load", () => {
         ready = true;
         alternate.hidden = false;
         button.disabled = false;
-        button.setAttribute("aria-label", "Show alternate profile photo");
+        show(false);
       }, { once: true });
 
       alternate.addEventListener("error", () => {
@@ -777,7 +850,7 @@
         ready = false;
         alternate.hidden = true;
         button.disabled = true;
-        button.setAttribute("aria-label", "Profile photo");
+        refreshPortraitLanguage();
       }, { once: true });
 
       button.addEventListener("pointerenter", (event) => {
