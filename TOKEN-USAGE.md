@@ -18,7 +18,7 @@ python3 scripts/update-token-usage.py
 - scripts/update-token-usage.py
 - TOKEN-USAGE.md
 
-日常只更新数字时，通常只有 data/token-usage.json 改变。GitHub Pages 读取这个静态快照，不能直接读取电脑日志；另有 Codex 每日自动任务负责刷新和推送（墨尔本时间 23:00）。任务依赖这台 Mac、Codex 与网络可用，SSH 代理必须能够免交互认证；认证失败时不会上传。没有新记录时不产生空提交。通过本地 HTTP 服务预览，直接双击 HTML 可能无法加载 JSON。
+日常只更新数字时，通常只有 data/token-usage.json 改变。GitHub Pages 读取这个静态快照，不能直接读取电脑日志；另有 Codex 每周自动任务负责刷新和推送（墨尔本时间每周一 22:00）。任务依赖这台 Mac、Codex 与网络可用，SSH 代理必须能够免交互认证；认证失败时不会上传。没有新记录时不产生空提交。通过本地 HTTP 服务预览，直接双击 HTML 可能无法加载 JSON。
 
 ## 统计范围与限制
 
