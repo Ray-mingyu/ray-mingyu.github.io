@@ -319,14 +319,6 @@
       background: #d9b849;
     }
 
-    /* News */
-    .news {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 20px;
-      font-size: 15px;
-    }
-
     time {
       color: var(--muted);
     }
@@ -401,59 +393,8 @@
     .dev-entry { border-left: 2px solid var(--line); padding: 0 0 24px 18px; }
     .dev-entry:last-child { padding-bottom: 0; }
     .dev-date { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
-    .dev-entry h4 { margin: 0 0 12px; font-size: 16px; line-height: 1.6; }
-    .dev-entry ul { padding-left: 20px; }
-
-    /* Background: add one timeline item for each stage of education. */
-    .section-note {
-      margin: -12px 0 24px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .timeline {
-      list-style: none;
-      margin: 0 0 0 6px;
-      padding: 0 0 0 27px;
-      border-left: 1px solid var(--line);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding: 0 0 30px;
-    }
-
-    .timeline-item:last-child {
-      padding-bottom: 4px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -33px;
-      top: 8px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 5px var(--paper);
-    }
-
-    .timeline-date {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .timeline h3 {
-      font-size: 17px;
-    }
-
-    .timeline p {
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
+    .dev-entry p { margin: 0; }
+    .dev-entry .dev-date { margin-bottom: 5px; }
 
     /* Miscellanea: personal content will be added later. */
     .empty {
@@ -531,11 +472,6 @@
         min-height: 135px;
       }
 
-      .news {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
       h2 {
         font-size: 26px;
       }
@@ -602,8 +538,6 @@
       <nav aria-label="Main navigation" data-zh-aria-label="主导航">
         <a href="#bio" data-zh="简介">Bio</a>
         <a href="#project" data-zh="项目">Project</a>
-        <a href="#news" data-zh="动态">News</a>
-        <a href="#bg" title="Background — education timeline" data-zh-title="学习经历时间线" data-zh="学习经历">BG</a>
         <a href="#misc" data-zh="生活">MISC</a>
       </nav>
       <button id="language-toggle" class="language-toggle" type="button" aria-label="切换到中文版" hidden>中文</button>
@@ -709,113 +643,34 @@
       <article class="project">
         <div class="project-art" aria-hidden="true">
           <strong>openGym</strong>
-          <span data-zh="迭代开发笔记">DEVELOPMENT JOURNAL</span>
+          <span data-zh="迭代记录">ITERATION UPDATES</span>
         </div>
 
         <div>
-          <h3 data-zh="openGym · 迭代开发笔记">openGym · Development journal</h3>
+          <h3 data-zh="openGym · 迭代记录">openGym · Iteration updates</h3>
 
           <p class="tagline">
             React / Node.js / Docker Compose / Caddy / HTTPS
           </p>
 
-          <p data-zh="记录我在 openGym 上的迭代过程：从部署运行，到修改交互和开发功能。每次更新保留为一篇笔记，逐步积累实践经历。">
-            Notes on my iterations with openGym, from getting it running to changing
-            interactions and developing features. Each update stays as a journal entry.
-          </p>
-
-          <!-- 开发日志维护：每次迭代在列表顶部追加一条，不覆盖旧笔记。
-               日期是记录日期；实际开发日期不明时不推断。中英文内容同步维护。 -->
-          <ol class="dev-journal" aria-label="openGym development journal" data-zh-aria-label="openGym 迭代开发记录">
+          <!-- 每次迭代追加一条日期与一句概括，不添加详细笔记或阅读链接。 -->
+          <ol class="dev-journal" aria-label="openGym iteration updates" data-zh-aria-label="openGym 迭代概览">
             <li class="dev-entry" id="opengym-log-2026-11-01">
-              <p class="dev-date"><time datetime="2026-11-01" data-zh="记录于 2026 年 11 月 1 日">Recorded 1 Nov 2026</time></p>
-              <h4 data-zh="这一轮：扩展登录方式，调整前端页面">This iteration: more sign-in options and frontend changes</h4>
-              <p data-zh="这一轮我开始改动账号入口，在原项目上增加注册与登录方式，并调整原有前端页面，让页面适配新的使用流程。">
-                In this iteration, I worked on the account entry flow: adding registration
-                and sign-in options to the original project and adapting its frontend pages.
-              </p>
-              <ul>
-                <li data-zh="注册与登录：加入邮箱验证码流程。">Registration and sign-in: added an email verification code flow.</li>
-                <li data-zh="登录入口：加入用户名和密码登录。">Sign-in entry: added username-and-password login.</li>
-                <li data-zh="前端调整：修改原有页面，衔接新的注册与登录流程。">Frontend changes: modified the existing pages to connect the new registration and sign-in flows.</li>
-              </ul>
+              <p class="dev-date"><time datetime="2026-11-01" data-zh="2026 年 11 月 1 日">1 Nov 2026</time></p>
+              <p data-zh="新增邮箱验证码注册与登录、用户名密码登录，并调整相关前端页面。">Added email-code registration and sign-in, username-and-password login, and updated the related frontend pages.</p>
             </li>
             <li class="dev-entry" id="opengym-log-deployment">
-              <p class="dev-date" data-zh="早期记录 · 具体日期未记录">Earlier notes · exact date not recorded</p>
-              <h4 data-zh="起点：先把开源项目运行起来">Starting point: getting the open-source project running</h4>
-              <p data-zh="最初我从自托管入手，用 Docker Compose 部署 openGym，配置 Caddy 反向代理和 HTTPS，并学习浏览器请求如何到达后端。这是后续改动功能和页面的起点。">
-                I started with self-hosting: deploying openGym with Docker Compose,
-                configuring Caddy and HTTPS, and learning how browser requests reach the backend.
-                This became the starting point for later feature and page changes.
-              </p>
+              <p class="dev-date" data-zh="早期迭代 · 日期未记录">Earlier iteration · date not recorded</p>
+              <p data-zh="完成 Docker Compose 自托管部署，配置 Caddy 反向代理与 HTTPS。">Set up self-hosted deployment with Docker Compose, Caddy reverse proxy, and HTTPS.</p>
             </li>
           </ol>
-
-          <p class="muted" data-zh="在原项目基础上开展二次开发与部署实践；原应用由 openGym 项目贡献者开发。">
-            These customizations and deployment work build on the original application,
-            developed by the openGym project contributors.
-          </p>
+          <p class="muted" data-zh="基于 openGym 开源项目进行二次开发。">Customizations built on the open-source openGym project.</p>
 
           <div class="project-links">
             <a class="project-demo" href="https://gym.lumingyu.top/" target="_blank" rel="noopener noreferrer" data-zh="在线体验 ↗">Live demo ↗</a>
-            <a href="https://github.com/DuarteSantos8/openGym" data-zh="原项目源码 ↗">
-              Upstream source ↗
-            </a>
           </div>
         </div>
       </article>
-    </section>
-
-    <!-- News -->
-    <section
-      class="section"
-      id="news"
-      aria-labelledby="news-heading"
-    >
-      <h2 id="news-heading" data-zh="动态">News</h2>
-
-      <div class="news">
-        <time datetime="2026-11-01" data-zh="2026 年 11 月 1 日">1 Nov 2026</time>
-        <p>
-          <span data-zh="新增一篇 openGym 迭代笔记：邮箱验证码流程、用户名密码登录，以及前端页面调整。">Added an openGym iteration note: email verification codes,
-          username-and-password sign-in, and frontend page changes.</span>
-          <a href="#opengym-log-2026-11-01" data-zh="阅读笔记 →">Read the note →</a>
-        </p>
-      </div>
-
-      <div class="news">
-        <time datetime="2026-10" data-zh="2026 年 10 月">Oct 2026</time>
-        <p data-zh="在 GitHub Pages 上发布了个人网站的第一个版本。">
-          Launched the first version of my personal website
-          on GitHub Pages.
-        </p>
-      </div>
-    </section>
-
-    <!-- BG: learning timeline. Add real dates and earlier education here. -->
-    <section class="section" id="bg" aria-labelledby="bg-heading">
-      <h2 id="bg-heading" data-zh="学习经历">Background</h2>
-      <p class="section-note" data-zh="我的学习历程。">My learning journey.</p>
-      <ol class="timeline" aria-label="Education timeline" data-zh-aria-label="教育经历时间线">
-        <!-- 学习时间线：专业名称和更多经历可在这里补充。 -->
-        <li class="timeline-item">
-          <span class="timeline-date">
-            <time datetime="2022-09" data-zh="2022 年 9 月">Sep 2022</time> –
-            <time datetime="2026-06" data-zh="2026 年 6 月">Jun 2026</time>
-          </span>
-          <h3 data-zh="哈尔滨师范大学">Harbin Normal University</h3>
-          <p class="muted" data-zh="本科">Undergraduate studies</p>
-        </li>
-        <li class="timeline-item">
-          <span class="timeline-date">
-            <time datetime="2026-07" data-zh="2026 年 7 月">Jul 2026</time> –
-            <time datetime="2028-07" data-zh="2028 年 7 月">Jul 2028</time> <span data-zh="（预计）">(expected)</span>
-          </span>
-          <h3 data-zh="墨尔本大学">The University of Melbourne</h3>
-          <p class="muted" data-zh="信息技术硕士">Master of Information Technology</p>
-          <p data-zh="学习分布式系统，探索 Java 后端开发。">Studying distributed systems and exploring Java backend development.</p>
-        </li>
-      </ol>
     </section>
 
     <!-- MISC: leave specific interests blank until confirmed. -->
