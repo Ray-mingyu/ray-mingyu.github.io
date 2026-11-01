@@ -551,7 +551,7 @@
       <div class="intro-text">
         <p class="eyebrow" lang="zh-CN">无限进步</p>
 
-        <h1 id="name">Mingyu Lu</h1>
+        <h1 id="name" data-zh="卢鸣宇">Mingyu Lu</h1>
 
         <p class="affiliation" data-zh="信息技术硕士在读 · 墨尔本大学">
           Master of IT Student · University of Melbourne
@@ -746,14 +746,12 @@
         toggle.setAttribute("aria-label", chinese ? "Switch to English" : "切换到中文版");
         document.dispatchEvent(new Event("languagechange"));
       };
-      let savedLanguage = "en";
-      try { savedLanguage = localStorage.getItem("ray-site-language") || "en"; } catch {}
-      applyLanguage(savedLanguage);
+      // 每次打开或刷新页面默认英文；访客可自行切换中文。
+      applyLanguage("en");
       toggle.hidden = false;
       toggle.addEventListener("click", () => {
         const nextLanguage = document.documentElement.lang === "en" ? "zh-CN" : "en";
         applyLanguage(nextLanguage);
-        try { localStorage.setItem("ray-site-language", nextLanguage); } catch {}
       });
     })();
 
