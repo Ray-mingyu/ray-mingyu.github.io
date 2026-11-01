@@ -397,6 +397,13 @@
 
     .project-demo:hover { opacity: 0.9; }
 
+    .dev-journal { list-style: none; padding: 0; margin: 24px 0; }
+    .dev-entry { border-left: 2px solid var(--line); padding: 0 0 24px 18px; }
+    .dev-entry:last-child { padding-bottom: 0; }
+    .dev-date { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    .dev-entry h4 { margin: 0 0 12px; font-size: 16px; line-height: 1.6; }
+    .dev-entry ul { padding-left: 20px; }
+
     /* Background: add one timeline item for each stage of education. */
     .section-note {
       margin: -12px 0 24px;
@@ -702,28 +709,47 @@
       <article class="project">
         <div class="project-art" aria-hidden="true">
           <strong>openGym</strong>
-          <span data-zh="二次开发与自托管">CUSTOMIZATION &amp; HOSTING</span>
+          <span data-zh="迭代开发笔记">DEVELOPMENT JOURNAL</span>
         </div>
 
         <div>
-          <h3 data-zh="openGym · 二次开发与自托管">openGym · Customization &amp; Self-hosting</h3>
+          <h3 data-zh="openGym · 迭代开发笔记">openGym · Development journal</h3>
 
           <p class="tagline">
             React / Node.js / Docker Compose / Caddy / HTTPS
           </p>
 
-          <p data-zh="基于开源健身记录应用 openGym 进行二次开发与自托管。我的实践包括账号注册与登录流程、前端页面调整，以及容器部署、反向代理配置与 HTTPS 设置。">
-            Customization and self-hosting of openGym, an open-source fitness tracker.
-            My work covers account registration and sign-in flows, frontend page updates,
-            container deployment, reverse proxy configuration, and HTTPS setup.
+          <p data-zh="记录我在 openGym 上的迭代过程：从部署运行，到修改交互和开发功能。每次更新保留为一篇笔记，逐步积累实践经历。">
+            Notes on my iterations with openGym, from getting it running to changing
+            interactions and developing features. Each update stays as a journal entry.
           </p>
 
-          <h4 data-zh="近期开发进展">Recent development progress</h4>
-          <ul>
-            <li data-zh="新增邮箱验证码注册与登录功能。">Added registration and sign-in with email verification codes.</li>
-            <li data-zh="支持使用用户名和密码登录。">Added username-and-password sign-in.</li>
-            <li data-zh="调整原有前端页面，适配新的注册与登录流程。">Updated the existing frontend pages for the new registration and sign-in flows.</li>
-          </ul>
+          <!-- 开发日志维护：每次迭代在列表顶部追加一条，不覆盖旧笔记。
+               日期是记录日期；实际开发日期不明时不推断。中英文内容同步维护。 -->
+          <ol class="dev-journal" aria-label="openGym development journal" data-zh-aria-label="openGym 迭代开发记录">
+            <li class="dev-entry" id="opengym-log-2026-11-01">
+              <p class="dev-date"><time datetime="2026-11-01" data-zh="记录于 2026 年 11 月 1 日">Recorded 1 Nov 2026</time></p>
+              <h4 data-zh="这一轮：扩展登录方式，调整前端页面">This iteration: more sign-in options and frontend changes</h4>
+              <p data-zh="这一轮我开始改动账号入口，在原项目上增加注册与登录方式，并调整原有前端页面，让页面适配新的使用流程。">
+                In this iteration, I worked on the account entry flow: adding registration
+                and sign-in options to the original project and adapting its frontend pages.
+              </p>
+              <ul>
+                <li data-zh="注册与登录：加入邮箱验证码流程。">Registration and sign-in: added an email verification code flow.</li>
+                <li data-zh="登录入口：加入用户名和密码登录。">Sign-in entry: added username-and-password login.</li>
+                <li data-zh="前端调整：修改原有页面，衔接新的注册与登录流程。">Frontend changes: modified the existing pages to connect the new registration and sign-in flows.</li>
+              </ul>
+            </li>
+            <li class="dev-entry" id="opengym-log-deployment">
+              <p class="dev-date" data-zh="早期记录 · 具体日期未记录">Earlier notes · exact date not recorded</p>
+              <h4 data-zh="起点：先把开源项目运行起来">Starting point: getting the open-source project running</h4>
+              <p data-zh="最初我从自托管入手，用 Docker Compose 部署 openGym，配置 Caddy 反向代理和 HTTPS，并学习浏览器请求如何到达后端。这是后续改动功能和页面的起点。">
+                I started with self-hosting: deploying openGym with Docker Compose,
+                configuring Caddy and HTTPS, and learning how browser requests reach the backend.
+                This became the starting point for later feature and page changes.
+              </p>
+            </li>
+          </ol>
 
           <p class="muted" data-zh="在原项目基础上开展二次开发与部署实践；原应用由 openGym 项目贡献者开发。">
             These customizations and deployment work build on the original application,
@@ -750,9 +776,10 @@
 
       <div class="news">
         <time datetime="2026-11-01" data-zh="2026 年 11 月 1 日">1 Nov 2026</time>
-        <p data-zh="openGym 开发进展：新增邮箱验证码注册与登录、用户名密码登录，并调整原有前端页面。">
-          openGym development update: added email-code registration and sign-in,
-          username-and-password sign-in, and updated the existing frontend pages.
+        <p>
+          <span data-zh="新增一篇 openGym 迭代笔记：邮箱验证码流程、用户名密码登录，以及前端页面调整。">Added an openGym iteration note: email verification codes,
+          username-and-password sign-in, and frontend page changes.</span>
+          <a href="#opengym-log-2026-11-01" data-zh="阅读笔记 →">Read the note →</a>
         </p>
       </div>
 
