@@ -383,7 +383,19 @@
       flex-wrap: wrap;
       gap: 10px 20px;
       font-size: 13px;
+      align-items: center;
     }
+
+    .project-demo {
+      display: inline-block;
+      padding: 7px 15px;
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      background: var(--green);
+      color: white;
+    }
+
+    .project-demo:hover { opacity: 0.9; }
 
     /* Background: add one timeline item for each stage of education. */
     .section-note {
@@ -719,6 +731,7 @@
           </p>
 
           <div class="project-links">
+            <a class="project-demo" href="https://gym.lumingyu.top/" target="_blank" rel="noopener noreferrer" data-zh="在线体验 ↗">Live demo ↗</a>
             <a href="https://github.com/DuarteSantos8/openGym" data-zh="原项目源码 ↗">
               Upstream source ↗
             </a>
