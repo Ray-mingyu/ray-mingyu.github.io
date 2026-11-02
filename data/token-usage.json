@@ -2,10 +2,18 @@
   "version": 1,
   "source": "local_codex_logs",
   "timezone": "Australia/Melbourne",
-  "updated_at": "2026-11-01T03:07:38.506612+00:00",
+  "updated_at": "2026-11-02T12:40:03.121731+00:00",
   "coverage": "available_local_records",
   "skipped_records": 0,
   "days": [
+    {
+      "date": "2026-09-26",
+      "input_tokens": 1683783,
+      "cached_input_tokens": 1567744,
+      "output_tokens": 20748,
+      "reasoning_output_tokens": 4251,
+      "total_tokens": 1704531
+    },
     {
       "date": "2026-10-19",
       "input_tokens": 270482,
@@ -32,19 +40,19 @@
     },
     {
       "date": "2026-10-25",
-      "input_tokens": 44265447,
-      "cached_input_tokens": 43755904,
-      "output_tokens": 84629,
-      "reasoning_output_tokens": 20623,
-      "total_tokens": 44350076
+      "input_tokens": 641765,
+      "cached_input_tokens": 611968,
+      "output_tokens": 1351,
+      "reasoning_output_tokens": 68,
+      "total_tokens": 643116
     },
     {
       "date": "2026-10-26",
-      "input_tokens": 13703732,
+      "input_tokens": 13678444,
       "cached_input_tokens": 13021952,
-      "output_tokens": 46034,
-      "reasoning_output_tokens": 5530,
-      "total_tokens": 13749766
+      "output_tokens": 45853,
+      "reasoning_output_tokens": 5426,
+      "total_tokens": 13724297
     },
     {
       "date": "2026-10-27",
@@ -80,11 +88,19 @@
     },
     {
       "date": "2026-11-01",
-      "input_tokens": 2770831,
-      "cached_input_tokens": 2423936,
-      "output_tokens": 7607,
-      "reasoning_output_tokens": 231,
-      "total_tokens": 2778438
+      "input_tokens": 61096330,
+      "cached_input_tokens": 59625728,
+      "output_tokens": 84907,
+      "reasoning_output_tokens": 14863,
+      "total_tokens": 61181237
+    },
+    {
+      "date": "2026-11-02",
+      "input_tokens": 23605957,
+      "cached_input_tokens": 22620160,
+      "output_tokens": 31127,
+      "reasoning_output_tokens": 991,
+      "total_tokens": 23637084
     }
   ]
 }
